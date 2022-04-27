@@ -15,13 +15,6 @@
         scm_type: git
         scm_url: https://github.com/ansible-cloud/azure-demos
         default_environment: "ee-cloud-services"
-    #    controller_config_file: "{{ playbook_dir }}/../controller.cfg"
-
-    # - name: delete native job template
-    #   ansible.controller.job_template:
-    #     name: "Demo Job Template"
-    #     state: "absent"
-    #     controller_config_file: "{{ playbook_dir }}/../controller.cfg"
 
     - name: create job template
       ansible.controller.job_template:
@@ -49,7 +42,6 @@
         credentials:
           - "Microsoft Azure Resource Manager"
         state: "present"
-     #   controller_config_file: "{{ playbook_dir }}/../controller.cfg"
       with_items:
         - { playbook: 'create_resource_group.yml', name: 'Create Azure Resource Group' }
         - { playbook: 'create_windows_vm_demo.yml', name: 'Create Windows Server 2022 VM' }
@@ -81,7 +73,6 @@
         credentials:
           - "Microsoft Azure Resource Manager"
         state: "present"
-      #  controller_config_file: "{{ playbook_dir }}/../controller.cfg"
       with_items:
         - { playbook: '01-create_resource_group.yml', name: 'WF-01-Create Resource Group' }
         - { playbook: '02-create_virtual_network.yml', name: 'WF-02-Create Virtual Network' }
