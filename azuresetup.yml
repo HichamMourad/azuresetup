@@ -84,7 +84,7 @@
 
     - name: create the workflow template and its schema
       ansible.controller.workflow_job_template:
-        name: "network-infra-deploy-config-windows2022"
+        name: "WF-network-infra-deploy-config-windows2022"
         organization: "Default"
         schema:
         - identifier: "WF-01-Create Resource Group"
