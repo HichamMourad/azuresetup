@@ -91,6 +91,9 @@
         - identifier: "WF-01-Create Resource Group"
           unified_job_template:
             name: "WF-01-Create Resource Group"
+            inventory:
+              organization:
+                name: Default    
             type: job_template
           related:
             success_nodes:
@@ -102,6 +105,9 @@
         - identifier: "WF-02-Create Virtual Network"
           unified_job_template:
             name: "WF-02-Create Virtual Network"
+            inventory:
+              organization:
+                name: Default               
             type: job_template
           related:
             success_nodes:
@@ -113,6 +119,9 @@
         - identifier: "WF-03-Add Subnet"
           unified_job_template:
             name: "WF-03-Add Subnet"
+            inventory:
+              organization:
+                name: Default               
             type: job_template
           related:
             success_nodes:
@@ -124,6 +133,9 @@
         - identifier: "WF-04-Create Public IP Address"
           unified_job_template:
             name: "WF-04-Create Public IP Address"
+            inventory:
+              organization:
+                name: Default               
             type: job_template
           related:
             success_nodes:
@@ -135,6 +147,9 @@
         - identifier: "WF-05-Create Network Security Group"
           unified_job_template:
             name: "WF-05-Create Network Security Group"
+            inventory:
+              organization:
+                name: Default               
             type: job_template
           related:
             success_nodes:
@@ -146,6 +161,9 @@
         - identifier: "WF-06-Create Virtual Network Interface Card"
           unified_job_template:
             name: "WF-06-Create Virtual Network Interface Card"
+            inventory:
+              organization:
+                name: Default               
             type: job_template
           related:
             success_nodes:
@@ -157,6 +175,9 @@
         - identifier: "WF-07-Create Windows 2022 Virtual Machine"
           unified_job_template:
             name: "WF-07-Create Windows 2022 Virtual Machine"
+            inventory:
+              organization:
+                name: Default               
             type: job_template
           related:
             success_nodes: []
