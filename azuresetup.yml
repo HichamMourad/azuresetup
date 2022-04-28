@@ -81,3 +81,85 @@
         - { playbook: '05-create_network_security_group.yml', name:  'WF-05-Create Network Security Group' }
         - { playbook: '06-create_virtual_network_interface_card.yml', name: 'WF-06-Create Virtual Network Interface Card' }
         - { playbook: '07-create_windows_2022_vm.yml', name: 'WF-07-Create Windows 2022 Virtual Machine' }
+
+    - name: create workflow template
+      ansible.controller.workflow_job_template:
+        name: "network-infra-deploy-config-windows2022"
+        organization: "Default"
+        inventory: "Demo Inventory"
+        schema:
+        - identifier: "WF-01-Create Resource Group"
+          unified_job_template:
+            name: "WF-01-Create Resource Group"
+            type: job_template
+          related:
+            success_nodes:
+              - identifier: "WF-02-Create Virtual Network"
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+            
+        - identifier: "WF-02-Create Virtual Network"
+          unified_job_template:
+            name: "WF-02-Create Virtual Network"
+            type: job_template
+          related:
+            success_nodes:
+              - identifier: "WF-03-Add Subnet"
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+            
+        - identifier: "WF-03-Add Subnet"
+          unified_job_template:
+            name: "WF-03-Add Subnet"
+            type: job_template
+          related:
+            success_nodes:
+              - identifier: "WF-04-Create Public IP Address"
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+            
+        - identifier: "WF-04-Create Public IP Address"
+          unified_job_template:
+            name: "WF-04-Create Public IP Address"
+            type: job_template
+          related:
+            success_nodes:
+              - identifier: "WF-05-Create Network Security Group"
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+            
+        - identifier: "WF-05-Create Network Security Group"
+          unified_job_template:
+            name: "WF-05-Create Network Security Group"
+            type: job_template
+          related:
+            success_nodes:
+              - identifier: "WF-06-Create Virtual Network Interface Card"
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+            
+        - identifier: "WF-06-Create Virtual Network Interface Card"
+          unified_job_template:
+            name: "WF-06-Create Virtual Network Interface Card"
+            type: job_template
+          related:
+            success_nodes:
+              - identifier: "WF-07-Create Windows 2022 Virtual Machine"
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
+            
+        - identifier: "WF-07-Create Windows 2022 Virtual Machine"
+          unified_job_template:
+            name: "WF-07-Create Windows 2022 Virtual Machine"
+            type: job_template
+          related:
+            success_nodes: []
+            failure_nodes: []
+            always_nodes: []
+            credentials: []
