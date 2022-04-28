@@ -93,7 +93,7 @@
             name: "WF-01-Create Resource Group"
             inventory:
               organization:
-                name: Default    
+                name: "Default"    
             type: job_template
           related:
             success_nodes:
@@ -107,7 +107,7 @@
             name: "WF-02-Create Virtual Network"
             inventory:
               organization:
-                name: Default               
+                name: "Default"             
             type: job_template
           related:
             success_nodes:
@@ -121,7 +121,7 @@
             name: "WF-03-Add Subnet"
             inventory:
               organization:
-                name: Default               
+                name: "Default"               
             type: job_template
           related:
             success_nodes:
@@ -135,7 +135,7 @@
             name: "WF-04-Create Public IP Address"
             inventory:
               organization:
-                name: Default               
+                name: "Default"               
             type: job_template
           related:
             success_nodes:
@@ -149,7 +149,7 @@
             name: "WF-05-Create Network Security Group"
             inventory:
               organization:
-                name: Default               
+                name: "Default"              
             type: job_template
           related:
             success_nodes:
@@ -163,7 +163,7 @@
             name: "WF-06-Create Virtual Network Interface Card"
             inventory:
               organization:
-                name: Default               
+                name: "Default"               
             type: job_template
           related:
             success_nodes:
@@ -177,7 +177,7 @@
             name: "WF-07-Create Windows 2022 Virtual Machine"
             inventory:
               organization:
-                name: Default               
+                name: "Default"               
             type: job_template
           related:
             success_nodes: []
