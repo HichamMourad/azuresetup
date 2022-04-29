@@ -27,6 +27,6 @@ This repo includes an Ansible Automation Platform (AAP) playbook to quickly popl
 
 - The content being added is from the following repository:  https://github.com/ansible-cloud/azure-demos
 
-Please customize any Extra Vars as needed for your environmnet.
+Please customize any Job Template **extra vars** as needed for your environmnet.
 
 Enjoy this sample content.
