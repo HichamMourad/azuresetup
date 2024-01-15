@@ -1,5 +1,5 @@
 ---
-- name: setup azure demo environment
+- name: Setup azure demo environment
   hosts: localhost
   gather_facts: false
   become: true
@@ -16,7 +16,7 @@
         scm_url: https://github.com/ansible-cloud/azure-demos
         default_environment: "ee-cloud-services"
 
-    - name: create the Azure related job templates
+    - name: Create the Azure related job templates
       ansible.controller.job_template:
         name: "{{ item.name }}"
         job_type: "run"
@@ -47,7 +47,7 @@
         - { playbook: 'create_windows_vm_demo.yml', name: 'Create Windows Server 2022 VM' }
         - { playbook: 'destroy_resource_group.yml', name: 'Destroy Azure Resource Group' }
 
-    - name: create the workflow nodes job templates
+    - name: Create the workflow nodes job templates
       ansible.controller.job_template:
         name: "{{ item.name }}"
         job_type: "run"
@@ -78,101 +78,101 @@
         - { playbook: '02-create_virtual_network.yml', name: 'WF-02-Create Virtual Network' }
         - { playbook: '03-add_subnet.yml', name: 'WF-03-Add Subnet' }
         - { playbook: '04-create_public_ip_address.yml', name: 'WF-04-Create Public IP Address' }
-        - { playbook: '05-create_network_security_group.yml', name:  'WF-05-Create Network Security Group' }
+        - { playbook: '05-create_network_security_group.yml', name: 'WF-05-Create Network Security Group' }
         - { playbook: '06-create_virtual_network_interface_card.yml', name: 'WF-06-Create Virtual Network Interface Card' }
         - { playbook: '07-create_windows_2022_vm.yml', name: 'WF-07-Create Windows 2022 Virtual Machine' }
 
-    - name: create the workflow template and its schema
+    - name: Create the workflow template and its schema
       ansible.controller.workflow_job_template:
         name: "WF-network-infra-deploy-config-windows2022"
         organization: "Default"
         schema:
-        - identifier: "WF-01-Create Resource Group"
-          unified_job_template:
-            name: "WF-01-Create Resource Group"
-            organization:
-              name: "Default"
-            type: job_template
-          related:
-            success_nodes:
-              - identifier: "WF-02-Create Virtual Network"
-            failure_nodes: []
-            always_nodes: []
-            credentials: []
+          - identifier: "WF-01-Create Resource Group"
+            unified_job_template:
+              name: "WF-01-Create Resource Group"
+              organization:
+                name: "Default"
+              type: job_template
+            related:
+              success_nodes:
+                - identifier: "WF-02-Create Virtual Network"
+              failure_nodes: []
+              always_nodes: []
+              credentials: []
 
-        - identifier: "WF-02-Create Virtual Network"
-          unified_job_template:
-            name: "WF-02-Create Virtual Network"
-            organization:
-              name: "Default"
-            type: job_template
-          related:
-            success_nodes:
-              - identifier: "WF-03-Add Subnet"
-            failure_nodes: []
-            always_nodes: []
-            credentials: []
+          - identifier: "WF-02-Create Virtual Network"
+            unified_job_template:
+              name: "WF-02-Create Virtual Network"
+              organization:
+                name: "Default"
+              type: job_template
+            related:
+              success_nodes:
+                - identifier: "WF-03-Add Subnet"
+              failure_nodes: []
+              always_nodes: []
+              credentials: []
 
-        - identifier: "WF-03-Add Subnet"
-          unified_job_template:
-            name: "WF-03-Add Subnet"
-            organization:
-              name: "Default"
-            type: job_template
-          related:
-            success_nodes:
-              - identifier: "WF-04-Create Public IP Address"
-            failure_nodes: []
-            always_nodes: []
-            credentials: []
+          - identifier: "WF-03-Add Subnet"
+            unified_job_template:
+              name: "WF-03-Add Subnet"
+              organization:
+                name: "Default"
+              type: job_template
+            related:
+              success_nodes:
+                - identifier: "WF-04-Create Public IP Address"
+              failure_nodes: []
+              always_nodes: []
+              credentials: []
 
-        - identifier: "WF-04-Create Public IP Address"
-          unified_job_template:
-            name: "WF-04-Create Public IP Address"
-            organization:
-              name: "Default"
-            type: job_template
-          related:
-            success_nodes:
-              - identifier: "WF-05-Create Network Security Group"
-            failure_nodes: []
-            always_nodes: []
-            credentials: []
+          - identifier: "WF-04-Create Public IP Address"
+            unified_job_template:
+              name: "WF-04-Create Public IP Address"
+              organization:
+                name: "Default"
+              type: job_template
+            related:
+              success_nodes:
+                - identifier: "WF-05-Create Network Security Group"
+              failure_nodes: []
+              always_nodes: []
+              credentials: []
 
-        - identifier: "WF-05-Create Network Security Group"
-          unified_job_template:
-            name: "WF-05-Create Network Security Group"
-            organization:
-              name: "Default"
-            type: job_template
-          related:
-            success_nodes:
-              - identifier: "WF-06-Create Virtual Network Interface Card"
-            failure_nodes: []
-            always_nodes: []
-            credentials: []
+          - identifier: "WF-05-Create Network Security Group"
+            unified_job_template:
+              name: "WF-05-Create Network Security Group"
+              organization:
+                name: "Default"
+              type: job_template
+            related:
+              success_nodes:
+                - identifier: "WF-06-Create Virtual Network Interface Card"
+              failure_nodes: []
+              always_nodes: []
+              credentials: []
 
-        - identifier: "WF-06-Create Virtual Network Interface Card"
-          unified_job_template:
-            name: "WF-06-Create Virtual Network Interface Card"
-            organization:
-              name: "Default"
-            type: job_template
-          related:
-            success_nodes:
-              - identifier: "WF-07-Create Windows 2022 Virtual Machine"
-            failure_nodes: []
-            always_nodes: []
-            credentials: []
+          - identifier: "WF-06-Create Virtual Network Interface Card"
+            unified_job_template:
+              name: "WF-06-Create Virtual Network Interface Card"
+              organization:
+                name: "Default"
+              type: job_template
+            related:
+              success_nodes:
+                - identifier: "WF-07-Create Windows 2022 Virtual Machine"
+              failure_nodes: []
+              always_nodes: []
+              credentials: []
 
-        - identifier: "WF-07-Create Windows 2022 Virtual Machine"
-          unified_job_template:
-            name: "WF-07-Create Windows 2022 Virtual Machine"
-            organization:
-              name: "Default"              
-            type: job_template
-          related:
-            success_nodes: []
-            failure_nodes: []
-            always_nodes: []
-            credentials: []
+          - identifier: "WF-07-Create Windows 2022 Virtual Machine"
+            unified_job_template:
+              name: "WF-07-Create Windows 2022 Virtual Machine"
+              organization:
+                name: "Default"
+              type: job_template
+            related:
+              success_nodes: []
+              failure_nodes: []
+              always_nodes: []
+              credentials: []
